@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import { Signupuser } from './Express_2.js';
 import bcrypt from 'bcrypt';
 import jwt, { decode } from 'jsonwebtoken';
@@ -9,7 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const PORT = 5000;
-mongoose.connect('mongodb://localhost:27017/linkedin_db', {
+dotenv.config(); 
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
